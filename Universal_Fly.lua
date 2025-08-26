@@ -96,7 +96,7 @@ end)
 print("Loading UI...")
 
 local Window = Rayfield:CreateWindow({
-   Name = "Universal fly Script",
+   Name = "Universal Fly Script",
    Icon = 0,
    LoadingTitle = "Universal Fly Script",
    LoadingSubtitle = "by prnxz69",
@@ -179,3 +179,4 @@ Rayfield:LoadConfiguration()
 
 
 print("Success!")
+
