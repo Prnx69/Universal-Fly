@@ -96,9 +96,9 @@ end)
 print("Loading UI...")
 
 local Window = Rayfield:CreateWindow({
-   Name = "Universal fly UI",
+   Name = "Universal fly Script",
    Icon = 0,
-   LoadingTitle = "Universal Fly UI",
+   LoadingTitle = "Universal Fly Script",
    LoadingSubtitle = "by prnxz69",
    ShowText = "Rayfield",
    Theme = "Default",
@@ -176,5 +176,6 @@ MainTab:CreateSlider({
 print("Starting UI...")
 
 Rayfield:LoadConfiguration()
+
 
 print("Success!")
