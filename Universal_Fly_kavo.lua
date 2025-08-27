@@ -168,7 +168,7 @@ MainSection:NewToggle("Enable Noclip", "Enable/Disable Noclip", function(state)
 end)
 
 MainSection:NewKeybind("Noclip Toggle Keybind", "Keybind For Noclip", Enum.KeyCode.N, function()
-    if flyEnabled then
+    if enableNoclip then
         enableNoclip()
     else
         disableNoclip()
@@ -176,4 +176,5 @@ MainSection:NewKeybind("Noclip Toggle Keybind", "Keybind For Noclip", Enum.KeyCo
 end)
 
 print("Success!")
+
 
