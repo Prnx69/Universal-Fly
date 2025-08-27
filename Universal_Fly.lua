@@ -93,12 +93,47 @@ player.CharacterAdded:Connect(function(char)
     hrp = char:WaitForChild("HumanoidRootPart")
 end)
 
+local function enableNoclip()
+    if noclipActive then return end
+    noclipActive = true
+
+    steppedConn = RunService.Stepped:Connect(function()
+        local character = Workspace:FindFirstChild(player.Name)
+        if character then
+            for _, part in pairs(character:GetDescendants()) do
+                if part:IsA("BasePart") then
+                    part.CanCollide = false
+                end
+            end
+        end
+    end)
+end
+
+local function disableNoclip()
+    if not noclipActive then return end
+    noclipActive = false
+
+    if steppedConn then
+        steppedConn:Disconnect()
+        steppedConn = nil
+    end
+
+    local character = Workspace:FindFirstChild(player.Name)
+    if character then
+        for _, part in pairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = true
+            end
+        end
+    end
+end
+
 print("Loading UI...")
 
 local Window = Rayfield:CreateWindow({
-   Name = "Universal Fly Script",
+   Name = "Universal fly UI",
    Icon = 0,
-   LoadingTitle = "Universal Fly Script",
+   LoadingTitle = "Universal Fly UI",
    LoadingSubtitle = "by prnxz69",
    ShowText = "Rayfield",
    Theme = "Default",
@@ -173,10 +208,21 @@ MainTab:CreateSlider({
     end
 })
 
+MainTab:CreateToggle({
+    Name = "Enable Noclip",
+    CurrentValue = false,
+    Flag = "NoclipToggle",
+    Callback = function(state)
+        if state then
+            enableNoclip()
+        else
+            disableNoclip()
+        end
+    end
+})
+
 print("Starting UI...")
 
 Rayfield:LoadConfiguration()
 
-
 print("Success!")
-
