@@ -221,8 +221,23 @@ MainTab:CreateToggle({
     end
 })
 
+MainTab:CreateKeybind({
+    Name = "Noclip Toggle Keybind",
+    CurrentKeybind = "N",
+    HoldToInteract = false,
+    Flag = "NoclipKeybind",
+    Callback = function()
+        if enableNoclip then
+            disableFly()
+        else
+            enableFly()
+        end
+    end
+})
+
 print("Starting UI...")
 
 Rayfield:LoadConfiguration()
 
 print("Success!")
+
